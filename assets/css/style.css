@@ -16,7 +16,13 @@
 \*-----------------------------------*/
 
 
+.btn-code{
+  background-color: #e9c24f !important;
+}
 
+.card-title{
+  color: #e9c24f;
+}
 /* Set the background to black and text to white */
 body {
   background-color: black;
