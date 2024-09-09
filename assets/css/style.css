@@ -15,6 +15,29 @@
   #CUSTOM PROPERTY
 \*-----------------------------------*/
 
+.title {
+  font-size: 24px;
+  color: #e9c24f;
+  font-family: Arial, sans-serif;
+}
+ #typing {
+   font-weight: 100;
+   font-size: 18px;
+   color: #e9c24f !important;
+ }
+ 
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 24px;
+  color: #e9c24f !important;
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 .btn-code{
   background-color: #e9c24f !important;

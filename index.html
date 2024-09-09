@@ -54,7 +54,9 @@
           <div class="info-content">
             <h1 class="name" title="Richard hanrick">Mohd Shuib Khan</h1>
 
-            <p class="title btn btn-warning">Full Stack developer</p>
+            <p class="title text-warning">
+              <span id="typing"></span><span class="blinking-cursor"></span>
+            </p>
           </div>
 
           <button class="info_more-btn" data-sidebar-btn>
@@ -63,7 +65,7 @@
                 src="./assets/images/menu.png"
                 alt="Mohd Shuib Khan"
                 width="20"
-                style="filter: grayscale(100%) invert(100%)"
+               
             /></span>
 
             <ion-icon name="chevron-down"></ion-icon>
@@ -280,7 +282,6 @@
                     src="./assets/images/devops.png"
                     alt="DevOps icon"
                     width="40"
-                 
                   />
                 </div>
 
@@ -300,7 +301,6 @@
                     src="./assets/images/database.png"
                     alt="camera icon"
                     width="40"
-                    
                   />
                 </div>
 
@@ -852,7 +852,7 @@
                       class="project-image"
                     />
                     <h3 class="card-title">LinkedIn Clone</h3>
-                   
+
                     <p class="card-description">
                       A collaborative platform that connects schools and
                       companies, enabling staff and students to log in, create,
@@ -1219,5 +1219,61 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+
+<script>
+  const titles = [
+    "Full Stack Developer",
+    "Backend Specialist",
+    "Frontend Expert",
+    "Software Engineer",
+    "Web Developer",
+    "API Integrator",
+    "Tech Enthusiast",
+    "Cloud Developer",
+  ];
+
+  let index = 0;           // Track the current title
+  let charIndex = 0;       // Track the current character of the title
+  let isDeleting = false;  // Track if it's deleting
+  const typingSpeed = 150;  // Speed of typing in milliseconds
+  const erasingSpeed = 50;  // Speed of erasing in milliseconds
+  const delayBetweenTitles = 1500; // Delay before starting to erase (after typing completes)
+
+  function typeEffect() {
+    const titleElement = document.getElementById("typing");
+
+    if (!isDeleting && charIndex <= titles[index].length) {
+      // Typing characters
+      titleElement.textContent = titles[index].substring(0, charIndex);
+      charIndex++;
+      setTimeout(typeEffect, typingSpeed);
+    } else if (isDeleting && charIndex > 0) {
+      // Erasing characters
+      titleElement.textContent = titles[index].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(typeEffect, erasingSpeed);
+    } else if (!isDeleting && charIndex === titles[index].length) {
+      // Finished typing, wait before erasing
+      setTimeout(() => {
+        isDeleting = true;
+        typeEffect();
+      }, delayBetweenTitles);
+    } else if (isDeleting && charIndex === 0) {
+      // Move to the next title after erasing
+      isDeleting = false;
+      index++;
+      if (index === titles.length) {
+        index = 0; // Reset to the first title if all are done
+      }
+      setTimeout(typeEffect, typingSpeed);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Start the typing effect after DOM is loaded
+    setTimeout(typeEffect, delayBetweenTitles);
+  });
+</script>
+
   </body>
 </html>
