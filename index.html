@@ -1,438 +1,1063 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohd Shuib Khan — Profile</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --bg:#f4f2ee;
-    --card:#ffffff;
-    --border:#e2e0da;
-    --text:#1a2226;
-    --text-soft:#56687a;
-    --text-faint:#8a97a3;
-    --blue:#1868b7;
-    --blue-dark:#0f4d8c;
-    --teal:#0f9d8c;
-    --amber:#e8a23d;
-    --radius:8px;
-  }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-    padding-bottom:60px;
-  }
-  a{ color:inherit; text-decoration:none; }
-  .display{ font-family:'Sora',sans-serif; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohd Shuib Khan — Profile</title>
 
-  /* top bar */
-  .topbar{
-    background:var(--card); border-bottom:1px solid var(--border);
-    position:sticky; top:0; z-index:10;
-  }
-  .topbar-inner{
-    max-width:1080px; margin:0 auto; padding:12px 24px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .brand{ display:flex; align-items:center; gap:10px; }
-  .brand-mark{
-    width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--blue),var(--teal));
-    display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:15px;
-  }
-  .brand-name{ font-family:'Sora',sans-serif; font-weight:600; font-size:15px; color:var(--text); }
-  .topbar-links{ display:flex; gap:26px; }
-  .topbar-links a{ font-size:13px; color:var(--text-soft); font-weight:500; }
-  .topbar-links a:hover{ color:var(--blue); }
-  .topbar-links a.active{ color:var(--blue); }
+    <!-- Favicon: LinkedIn-style rounded square with initials -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231868B7'/%3E%3Ctext x='32' y='44' font-family='Arial, sans-serif' font-weight='700' font-size='30' fill='white' text-anchor='middle'%3ESK%3C/text%3E%3C/svg%3E"
+    />
 
-  .wrap{ max-width:1080px; margin:0 auto; padding:24px; display:grid; grid-template-columns:1fr 320px; gap:20px; align-items:start; }
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4f2ee;
+        --card: #ffffff;
+        --border: #e2e0da;
+        --text: #1a2226;
+        --text-soft: #56687a;
+        --text-faint: #8a97a3;
+        --blue: #1868b7;
+        --blue-dark: #0f4d8c;
+        --teal: #0f9d8c;
+        --amber: #e8a23d;
+        --radius: 8px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.55;
+        padding-bottom: 60px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .display {
+        font-family: "Sora", sans-serif;
+      }
 
-  /* profile card */
-  .profile-card{ grid-column:1 / -1; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
-  .cover{
-    height:150px;
-    background:
-      radial-gradient(600px circle at 20% -20%, rgba(255,255,255,0.18), transparent 55%),
-      linear-gradient(120deg, var(--blue-dark), var(--blue) 55%, var(--teal));
-  }
-  .profile-main{ padding:0 28px 24px; position:relative; }
-  .avatar{
-    width:128px; height:128px; border-radius:50%; border:4px solid var(--card);
-    background:linear-gradient(155deg,var(--blue),var(--teal));
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:44px;
-    margin-top:-58px; box-shadow:0 2px 6px rgba(0,0,0,0.08);
-  }
-  .profile-head{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-top:12px; }
-  .profile-name{ font-family:'Sora',sans-serif; font-size:26px; font-weight:700; }
-  .profile-headline{ color:var(--text); font-size:15px; margin-top:4px; max-width:560px; }
-  .profile-meta{ color:var(--text-faint); font-size:13px; margin-top:8px; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
-  .profile-meta .dot{ width:3px; height:3px; border-radius:50%; background:var(--text-faint); }
-  .profile-meta a{ color:var(--blue); font-weight:600; }
+      /* top bar */
+      .topbar {
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .topbar-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--blue), var(--teal));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .brand-name {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--text);
+      }
+      .topbar-links {
+        display: flex;
+        gap: 26px;
+      }
+      .topbar-links a {
+        font-size: 13px;
+        color: var(--text-soft);
+        font-weight: 500;
+      }
+      .topbar-links a:hover {
+        color: var(--blue);
+      }
+      .topbar-links a.active {
+        color: var(--blue);
+      }
 
-  .action-row{ display:flex; gap:10px; }
-  .btn{
-    font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; padding:8px 20px;
-    border-radius:24px; cursor:pointer; border:1.5px solid var(--blue);
-    transition:all .15s ease;
-  }
-  .btn-primary{ background:var(--blue); color:#fff; }
-  .btn-primary:hover{ background:var(--blue-dark); }
-  .btn-secondary{ background:transparent; color:var(--blue); }
-  .btn-secondary:hover{ background:rgba(24,104,183,0.08); }
+      .wrap {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 20px;
+        align-items: start;
+      }
 
-  .stat-row{ display:flex; gap:26px; margin-top:18px; padding-top:16px; border-top:1px solid var(--border); }
-  .stat{ }
-  .stat-num{ font-family:'Sora',sans-serif; font-weight:700; font-size:18px; color:var(--blue); }
-  .stat-label{ font-size:12px; color:var(--text-faint); margin-top:2px; }
+      /* profile card */
+      .profile-card {
+        grid-column: 1 / -1;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .cover {
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        background-image: url("assets/images/bg.jpeg");
+        background-size: cover;
+        background-position: center;7      }
+      /* color wash over the banner photo so it matches the brand palette
+         and stays legible under the avatar/name area */
+      .cover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          600px circle at 20% -20%,
+          rgba(255, 255, 255, 0.16),
+          transparent 55%
+        );
+        /* linear-gradient(
+            120deg,
+            rgba(15, 77, 140, 0.82),
+            rgba(24, 104, 183, 0.72) 55%,
+            rgba(15, 157, 140, 0.75)
+          ); */
+      }
+      .profile-main {
+        padding: 0 28px 24px;
+        position: relative;
+      }
+      .avatar {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        border: 4px solid var(--card);
+        background: linear-gradient(155deg, var(--blue), var(--teal));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 44px;
+        margin-top: -58px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+      }
+      .profile-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 12px;
+      }
+      .profile-name {
+        font-family: "Sora", sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+      }
+      .profile-headline {
+        color: var(--text);
+        font-size: 15px;
+        margin-top: 4px;
+        max-width: 560px;
+      }
+      .profile-meta {
+        color: var(--text-faint);
+        font-size: 13px;
+        margin-top: 8px;
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .profile-meta .dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--text-faint);
+      }
+      .profile-meta a {
+        color: var(--blue);
+        font-weight: 600;
+      }
 
-  /* generic card */
-  .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px 24px; margin-bottom:20px; }
-  .card-title{ font-family:'Sora',sans-serif; font-size:17px; font-weight:700; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
-  .card-title .tag-icon{ width:18px; height:18px; border-radius:4px; background:var(--blue); display:inline-block; }
+      .action-row {
+        display: flex;
+        gap: 10px;
+      }
+      .btn {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 13.5px;
+        padding: 8px 20px;
+        border-radius: 24px;
+        cursor: pointer;
+        border: 1.5px solid var(--blue);
+        transition: all 0.15s ease;
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--blue-dark);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--blue);
+      }
+      .btn-secondary:hover {
+        background: rgba(24, 104, 183, 0.08);
+      }
 
-  .about-text{ color:var(--text); font-size:14.5px; }
-  .about-text p + p{ margin-top:12px; }
+      .stat-row {
+        display: flex;
+        gap: 26px;
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid var(--border);
+      }
+      .stat {
+      }
+      .stat-num {
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--blue);
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--text-faint);
+        margin-top: 2px;
+      }
 
-  /* experience */
-  .exp-item{ display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--border); }
-  .exp-item:last-child{ border-bottom:none; padding-bottom:0; }
-  .exp-item:first-child{ padding-top:0; }
-  .exp-logo{
-    width:48px; height:48px; border-radius:8px; flex-shrink:0;
-    background:linear-gradient(135deg,var(--blue),var(--blue-dark));
-    display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:16px;
-  }
-  .exp-role{ font-family:'Sora',sans-serif; font-weight:600; font-size:15.5px; }
-  .exp-company{ font-size:13.5px; color:var(--text); }
-  .exp-meta{ font-size:12.5px; color:var(--text-faint); margin:2px 0 8px; }
-  .exp-bullets{ list-style:none; display:flex; flex-direction:column; gap:6px; }
-  .exp-bullets li{ font-size:13.5px; color:var(--text-soft); padding-left:16px; position:relative; }
-  .exp-bullets li::before{ content:'▸'; position:absolute; left:0; color:var(--blue); font-size:11px; top:2px; }
+      /* generic card */
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px 24px;
+        margin-bottom: 20px;
+      }
+      .card-title {
+        font-family: "Sora", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .card-title .tag-icon {
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        background: var(--blue);
+        display: inline-block;
+      }
 
-  /* education */
-  .edu-item{ display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--border); }
-  .edu-item:last-child{ border-bottom:none; padding-bottom:0; }
-  .edu-item:first-child{ padding-top:0; }
-  .edu-logo{
-    width:48px; height:48px; border-radius:8px; flex-shrink:0;
-    background:linear-gradient(135deg,var(--teal),#0c7a6d);
-    display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Sora',sans-serif; font-weight:700; font-size:14px;
-  }
-  .edu-title{ font-family:'Sora',sans-serif; font-weight:600; font-size:15px; }
-  .edu-school{ font-size:13.5px; color:var(--text); }
-  .edu-meta{ font-size:12.5px; color:var(--text-faint); margin-top:2px; }
+      .about-text {
+        color: var(--text);
+        font-size: 14.5px;
+      }
+      .about-text p + p {
+        margin-top: 12px;
+      }
 
-  /* projects (featured) */
-  .featured-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-  .featured-card{ border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:box-shadow .15s ease, transform .15s ease; }
-  .featured-card:hover{ box-shadow:0 4px 14px rgba(0,0,0,0.07); transform:translateY(-2px); }
-  .featured-banner{ height:64px; background:linear-gradient(120deg,var(--blue),var(--teal)); position:relative; }
-  .live-badge{
-    position:absolute; top:10px; right:10px; background:rgba(255,255,255,0.92); color:var(--blue-dark);
-    font-size:10px; font-weight:700; padding:3px 9px; border-radius:20px; letter-spacing:0.04em;
-    display:flex; align-items:center; gap:5px;
-  }
-  .live-badge .dot{ width:5px; height:5px; border-radius:50%; background:#1fae63; }
-  .featured-body{ padding:14px 16px; }
-  .featured-title{ font-family:'Sora',sans-serif; font-weight:600; font-size:14.5px; }
-  .featured-url{ font-size:12px; color:var(--blue); margin:2px 0 8px; }
-  .featured-desc{ font-size:12.5px; color:var(--text-soft); }
+      /* experience */
+      .exp-item {
+        display: flex;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .exp-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .exp-item:first-child {
+        padding-top: 0;
+      }
+      .exp-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        overflow: hidden;
+      }
+      .exp-logo img,
+      .edu-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .exp-role {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 15.5px;
+      }
+      .exp-company {
+        font-size: 13.5px;
+        color: var(--text);
+      }
+      .exp-meta {
+        font-size: 12.5px;
+        color: var(--text-faint);
+        margin: 2px 0 8px;
+      }
+      .exp-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .exp-bullets li {
+        font-size: 13.5px;
+        color: var(--text-soft);
+        padding-left: 16px;
+        position: relative;
+      }
+      .exp-bullets li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-size: 11px;
+        top: 2px;
+      }
 
-  .archive-row{ display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border); gap:12px; }
-  .archive-row:last-child{ border-bottom:none; padding-bottom:0; }
-  .archive-row:first-child{ padding-top:0; }
-  .archive-title{ font-family:'Sora',sans-serif; font-weight:600; font-size:14px; }
-  .archive-stack{ font-size:12px; color:var(--text-faint); margin-top:2px; }
-  .archive-link{ font-size:12.5px; color:var(--blue); font-weight:600; white-space:nowrap; }
-  .archive-link:hover{ text-decoration:underline; }
+      /* education */
+      .edu-item {
+        display: flex;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .edu-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .edu-item:first-child {
+        padding-top: 0;
+      }
+      .edu-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, var(--teal), #0c7a6d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-family: "Sora", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        overflow: hidden;
+      }
+      .edu-title {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .edu-school {
+        font-size: 13.5px;
+        color: var(--text);
+      }
+      .edu-meta {
+        font-size: 12.5px;
+        color: var(--text-faint);
+        margin-top: 2px;
+      }
 
-  /* sidebar */
-  .side-card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px 22px; margin-bottom:20px; }
-  .side-title{ font-family:'Sora',sans-serif; font-size:15px; font-weight:700; margin-bottom:12px; }
+      /* projects (featured) */
+      .featured-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .featured-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition:
+          box-shadow 0.15s ease,
+          transform 0.15s ease;
+      }
+      .featured-card:hover {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+        transform: translateY(-2px);
+      }
+      .featured-banner {
+        height: 64px;
+        background: linear-gradient(120deg, var(--blue), var(--teal));
+        position: relative;
+      }
+      .live-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--blue-dark);
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 20px;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .live-badge .dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #1fae63;
+      }
+      .featured-body {
+        padding: 14px 16px;
+      }
+      .featured-title {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 14.5px;
+      }
+      .featured-url {
+        font-size: 12px;
+        color: var(--blue);
+        margin: 2px 0 8px;
+      }
+      .featured-desc {
+        font-size: 12.5px;
+        color: var(--text-soft);
+      }
 
-  .skill-group{ margin-bottom:16px; }
-  .skill-group:last-child{ margin-bottom:0; }
-  .skill-group-label{ font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; }
-  .pill-row{ display:flex; flex-wrap:wrap; gap:7px; }
-  .pill{ font-size:12px; background:#eef4fb; color:var(--blue-dark); border:1px solid #d8e7f5; border-radius:16px; padding:5px 11px; font-weight:500; }
-  .pill.new{ background:#fdf3e3; color:#8a5c0c; border-color:#f3dfb3; }
+      .archive-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        gap: 12px;
+      }
+      .archive-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .archive-row:first-child {
+        padding-top: 0;
+      }
+      .archive-title {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .archive-stack {
+        font-size: 12px;
+        color: var(--text-faint);
+        margin-top: 2px;
+      }
+      .archive-link {
+        font-size: 12.5px;
+        color: var(--blue);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .archive-link:hover {
+        text-decoration: underline;
+      }
 
-  .contact-list{ display:flex; flex-direction:column; gap:12px; }
-  .contact-row{ display:flex; gap:10px; align-items:center; font-size:13.5px; }
-  .contact-ico{ width:30px; height:30px; border-radius:6px; background:#eef4fb; color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
-  .contact-row a:hover{ color:var(--blue); }
+      /* sidebar */
+      .side-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        margin-bottom: 20px;
+      }
+      .side-title {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
 
-  footer{ text-align:center; color:var(--text-faint); font-size:12px; padding:24px 0 0; }
+      .skill-group {
+        margin-bottom: 16px;
+      }
+      .skill-group:last-child {
+        margin-bottom: 0;
+      }
+      .skill-group-label {
+        font-size: 11.5px;
+        color: var(--text-faint);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+      }
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .pill {
+        font-size: 12px;
+        background: #eef4fb;
+        color: var(--blue-dark);
+        border: 1px solid #d8e7f5;
+        border-radius: 16px;
+        padding: 5px 11px;
+        font-weight: 500;
+      }
+      .pill.new {
+        background: #fdf3e3;
+        color: #8a5c0c;
+        border-color: #f3dfb3;
+      }
 
-  @media (max-width:860px){
-    .wrap{ grid-template-columns:1fr; }
-    .featured-grid{ grid-template-columns:1fr; }
-    .topbar-links{ display:none; }
-  }
-</style>
-</head>
-<body>
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .contact-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 13.5px;
+      }
+      .contact-ico {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        background: #eef4fb;
+        color: var(--blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        flex-shrink: 0;
+      }
+      .contact-row a:hover {
+        color: var(--blue);
+      }
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <div class="brand-mark">SK</div>
-      <div class="brand-name">Shuib Khan</div>
+      footer {
+        text-align: center;
+        color: var(--text-faint);
+        font-size: 12px;
+        padding: 24px 0 0;
+      }
+
+      @media (max-width: 860px) {
+        .wrap {
+          grid-template-columns: 1fr;
+        }
+        .featured-grid {
+          grid-template-columns: 1fr;
+        }
+        .topbar-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-mark">SK</div>
+          <div class="brand-name">Shuib Khan</div>
+        </div>
+        <nav class="topbar-links">
+          <a href="#about" class="active">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+        </nav>
+      </div>
     </div>
-    <nav class="topbar-links">
-      <a href="#about" class="active">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-    </nav>
-  </div>
-</div>
 
-<div class="wrap">
-
-  <!-- PROFILE HEADER -->
-  <div class="profile-card">
-    <div class="cover"></div>
-    <div class="profile-main">
-      <div class="avatar">SK</div>
-      <div class="profile-head">
-        <div>
-          <div class="profile-name">Mohd Shuib Khan</div>
-          <div class="profile-headline">Software Engineer at NovasArc — Laravel · Next.js · Go · AWS</div>
-          <div class="profile-meta">
-            <span>Hasanpur, Amroha, UP, India</span><span class="dot"></span>
-            <a href="mailto:i.am.shezziii@gmail.com">i.am.shezziii@gmail.com</a><span class="dot"></span>
-            <a href="https://github.com/Shezziii" target="_blank">github.com/Shezziii</a><span class="dot"></span>
-            <a href="https://shezziii.github.io/portfolio" target="_blank">portfolio</a>
+    <div class="wrap">
+      <!-- PROFILE HEADER -->
+      <div class="profile-card">
+        <div class="cover"></div>
+        <div class="profile-main">
+          <div class="avatar">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D5635AQGVcRXP4IA3AQ/profile-framedphoto-shrink_400_400/B56Zlq4J3kJ4Ac-/0/1758434729809?e=1783951200&v=beta&t=_WaeiazQUw2cy2A_gAZ9-IB6xSxlsGmmPF-L7gbpZGw"
+              alt="Mohd Shuib Khan"
+              onerror="
+                this.style.display = 'none';
+                this.parentElement.textContent = 'SK';
+              "
+            />
+          </div>
+          <div class="profile-head">
+            <div>
+              <div class="profile-name">Mohd Shuib Khan</div>
+              <div class="profile-headline">
+                Software Engineer at NovasArc — Laravel · Next.js · Go · AWS
+              </div>
+              <div class="profile-meta">
+                <span>Hasanpur, Amroha, UP, India</span
+                ><span class="dot"></span>
+                <a href="mailto:i.am.shezziii@gmail.com"
+                  >i.am.shezziii@gmail.com</a
+                ><span class="dot"></span>
+                <a href="https://github.com/Shezziii" target="_blank"
+                  >github.com/Shezziii</a
+                ><span class="dot"></span>
+                <a href="https://shezziii.github.io/portfolio" target="_blank"
+                  >portfolio</a
+                >
+              </div>
+            </div>
+            <div class="action-row">
+              <a class="btn btn-primary" href="mailto:i.am.shezziii@gmail.com"
+                >Message</a
+              >
+              <a
+                class="btn btn-secondary"
+                href="https://www.linkedin.com/in/mohd-shuib-khan-355796248"
+                target="_blank"
+                >Connect</a
+              >
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num">2.5+ yrs</div>
+              <div class="stat-label">Experience</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Freelance clients</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">9.1</div>
+              <div class="stat-label">BCA CGPA</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Live client sites</div>
+            </div>
           </div>
         </div>
-        <div class="action-row">
-          <a class="btn btn-primary" href="mailto:i.am.shezziii@gmail.com">Message</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/mohd-shuib-khan-355796248" target="_blank">Connect</a>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-num">2.5+ yrs</div><div class="stat-label">Experience</div></div>
-        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Freelance clients</div></div>
-        <div class="stat"><div class="stat-num">9.1</div><div class="stat-label">BCA CGPA</div></div>
-        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Live client sites</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MAIN COLUMN -->
-  <div>
-    <div class="card" id="about">
-      <div class="card-title"><span class="tag-icon"></span>About</div>
-      <div class="about-text">
-        <p>Backend-focused full-stack engineer building production systems in Laravel and Next.js, with cloud deployments on AWS. I spearhead backend development for 10+ freelance clients at NovasArc — API design, containerized deployments, and secure, production-ready delivery.</p>
-        <p>Currently expanding into <strong>Go</strong>, alongside daily work in PHP, Python, and JavaScript across microservices, REST APIs, and WebSocket-based systems. Pursuing an MCA at IFTM University after completing my BCA with a 9.1 CGPA.</p>
-      </div>
-    </div>
-
-    <div class="card" id="experience">
-      <div class="card-title"><span class="tag-icon"></span>Experience</div>
-
-      <div class="exp-item">
-        <div class="exp-logo">NA</div>
-        <div>
-          <div class="exp-role">Software Engineer</div>
-          <div class="exp-company">NovasArc</div>
-          <div class="exp-meta">September 2023 – Present · Hyderabad, India</div>
-          <ul class="exp-bullets">
-            <li>Spearheading backend development using Laravel for 10+ freelancer clients, achieving performance improvement and extended features</li>
-            <li>Overseeing containerized deployments with Docker and AWS ECS, reducing deployment time via CI/CD pipeline for 5+ projects</li>
-            <li>Collaborating with development teams to deliver secure, production-ready applications meeting business requirements</li>
-          </ul>
-        </div>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-logo">NA</div>
-        <div>
-          <div class="exp-role">Software Developer Intern</div>
-          <div class="exp-company">NovasArc</div>
-          <div class="exp-meta">March 2023 – September 2023 · Hyderabad, India</div>
-          <ul class="exp-bullets">
-            <li>Engineered a website monitoring system for 50+ sites utilizing PHP Core APIs with uptime tracking</li>
-            <li>Integrated Google APIs into Laravel applications for seamless workflows</li>
-            <li>Participated in code reviews, technical documentation, and agile sprint planning processes</li>
-            <li>Coordinated with senior developers on API design and database optimization strategies</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" id="education">
-      <div class="card-title"><span class="tag-icon"></span>Education</div>
-      <div class="edu-item">
-        <div class="edu-logo">MCA</div>
-        <div>
-          <div class="edu-title">Master of Computer Applications (MCA)</div>
-          <div class="edu-school">IFTM University, Moradabad</div>
-          <div class="edu-meta">2023 – Present</div>
-        </div>
-      </div>
-      <div class="edu-item">
-        <div class="edu-logo">BCA</div>
-        <div>
-          <div class="edu-title">Bachelor of Computer Applications (BCA)</div>
-          <div class="edu-school">IFTM University, Moradabad</div>
-          <div class="edu-meta">2020 – 2023 · CGPA: 9.1</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" id="projects">
-      <div class="card-title"><span class="tag-icon"></span>Featured — Live client sites</div>
-      <div class="featured-grid">
-        <div class="featured-card">
-          <div class="featured-banner"><span class="live-badge"><span class="dot"></span>LIVE</span></div>
-          <div class="featured-body">
-            <div class="featured-title">Peace Plants</div>
-            <div class="featured-url"><a href="https://peaceplants.com" target="_blank">peaceplants.com</a></div>
-            <div class="featured-desc">Plant nursery storefront — hero slider, product collections, sustainability section.</div>
+      <!-- MAIN COLUMN -->
+      <div>
+        <div class="card" id="about">
+          <div class="card-title"><span class="tag-icon"></span>About</div>
+          <div class="about-text">
+            <p>
+              Backend-focused full-stack engineer building production systems in
+              Laravel and Next.js, with cloud deployments on AWS. I spearhead
+              backend development for 10+ freelance clients at NovasArc — API
+              design, containerized deployments, and secure, production-ready
+              delivery.
+            </p>
+            <p>
+              Currently expanding into <strong>Go</strong>, alongside daily work
+              in PHP, Python, and JavaScript across microservices, REST APIs,
+              and WebSocket-based systems. Pursuing an MCA at IFTM University
+              after completing my BCA with a 9.1 CGPA.
+            </p>
           </div>
         </div>
-        <div class="featured-card">
-          <div class="featured-banner"><span class="live-badge"><span class="dot"></span>LIVE</span></div>
-          <div class="featured-body">
-            <div class="featured-title">All World HR Holidays</div>
-            <div class="featured-url"><a href="https://allworldhrholidays.com" target="_blank">allworldhrholidays.com</a></div>
-            <div class="featured-desc">HR & holidays/travel services site with service listings and enquiry flow.</div>
+
+        <div class="card" id="experience">
+          <div class="card-title"><span class="tag-icon"></span>Experience</div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/C560BAQFGLj7qTRA9Qw/company-logo_200_200/company-logo_200_200/0/1657917704856/novasarc_logo?e=1784764800&v=beta&t=eBjTsRo-dR0Cwy66pqbPe75e5ySL50owpg3cHwZzhC4"
+                alt="NovasArc"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.textContent = 'NA';
+                "
+              />
+            </div>
+            <div>
+              <div class="exp-role">Software Engineer</div>
+              <div class="exp-company">NovasArc</div>
+              <div class="exp-meta">
+                September 2023 – Present · Hyderabad, India
+              </div>
+              <ul class="exp-bullets">
+                <li>
+                  Spearheading backend development using Laravel for 10+
+                  freelancer clients, achieving performance improvement and
+                  extended features
+                </li>
+                <li>
+                  Overseeing containerized deployments with Docker and AWS ECS,
+                  reducing deployment time via CI/CD pipeline for 5+ projects
+                </li>
+                <li>
+                  Collaborating with development teams to deliver secure,
+                  production-ready applications meeting business requirements
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-logo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/C560BAQFGLj7qTRA9Qw/company-logo_200_200/company-logo_200_200/0/1657917704856/novasarc_logo?e=1784764800&v=beta&t=eBjTsRo-dR0Cwy66pqbPe75e5ySL50owpg3cHwZzhC4"
+                alt="NovasArc"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.textContent = 'NA';
+                "
+              />
+            </div>
+            <div>
+              <div class="exp-role">Software Developer Intern</div>
+              <div class="exp-company">NovasArc</div>
+              <div class="exp-meta">
+                March 2023 – September 2023 · Hyderabad, India
+              </div>
+              <ul class="exp-bullets">
+                <li>
+                  Engineered a website monitoring system for 50+ sites utilizing
+                  PHP Core APIs with uptime tracking
+                </li>
+                <li>
+                  Integrated Google APIs into Laravel applications for seamless
+                  workflows
+                </li>
+                <li>
+                  Participated in code reviews, technical documentation, and
+                  agile sprint planning processes
+                </li>
+                <li>
+                  Coordinated with senior developers on API design and database
+                  optimization strategies
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="featured-card">
-          <div class="featured-banner"><span class="live-badge"><span class="dot"></span>LIVE</span></div>
-          <div class="featured-body">
-            <div class="featured-title">Woodborn Ply</div>
-            <div class="featured-url"><a href="https://woodbornply.com" target="_blank">woodbornply.com</a></div>
-            <div class="featured-desc">Plywood supplier site — certification badge marquee and full custom design system.</div>
+
+        <div class="card" id="education">
+          <div class="card-title"><span class="tag-icon"></span>Education</div>
+          <div class="edu-item">
+            <div class="edu-logo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4D0BAQGd85WU9oo_3Q/company-logo_200_200/company-logo_200_200/0/1667505199990/iftm_university_moradabad_logo?e=1784764800&v=beta&t=FjbCi7566sZO1FFo4PZcuTUNSRHv8sy3peViu7mq7-o"
+                alt="IFTM University"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.textContent = 'MCA';
+                "
+              />
+            </div>
+            <div>
+              <div class="edu-title">Master of Computer Applications (MCA)</div>
+              <div class="edu-school">IFTM University, Moradabad</div>
+              <div class="edu-meta">2023 – Present</div>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-logo">
+              <img
+                src="https://media.licdn.com/dms/image/v2/D4D0BAQGd85WU9oo_3Q/company-logo_200_200/company-logo_200_200/0/1667505199990/iftm_university_moradabad_logo?e=1784764800&v=beta&t=FjbCi7566sZO1FFo4PZcuTUNSRHv8sy3peViu7mq7-o"
+                alt="IFTM University"
+                onerror="
+                  this.style.display = 'none';
+                  this.parentElement.textContent = 'BCA';
+                "
+              />
+            </div>
+            <div>
+              <div class="edu-title">
+                Bachelor of Computer Applications (BCA)
+              </div>
+              <div class="edu-school">IFTM University, Moradabad</div>
+              <div class="edu-meta">2020 – 2023 · CGPA: 9.1</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="projects">
+          <div class="card-title">
+            <span class="tag-icon"></span>Featured — Live client sites
+          </div>
+          <div class="featured-grid">
+            <div class="featured-card">
+              <div class="featured-banner">
+                <span class="live-badge"><span class="dot"></span>LIVE</span>
+              </div>
+              <div class="featured-body">
+                <div class="featured-title">Peace Plants</div>
+                <div class="featured-url">
+                  <a href="https://peaceplants.com" target="_blank"
+                    >peaceplants.com</a
+                  >
+                </div>
+                <div class="featured-desc">
+                  Plant nursery storefront — hero slider, product collections,
+                  sustainability section.
+                </div>
+              </div>
+            </div>
+            <div class="featured-card">
+              <div class="featured-banner">
+                <span class="live-badge"><span class="dot"></span>LIVE</span>
+              </div>
+              <div class="featured-body">
+                <div class="featured-title">All World HR Holidays</div>
+                <div class="featured-url">
+                  <a href="https://allworldhrholidays.com" target="_blank"
+                    >allworldhrholidays.com</a
+                  >
+                </div>
+                <div class="featured-desc">
+                  HR & holidays/travel services site with service listings and
+                  enquiry flow.
+                </div>
+              </div>
+            </div>
+            <div class="featured-card">
+              <div class="featured-banner">
+                <span class="live-badge"><span class="dot"></span>LIVE</span>
+              </div>
+              <div class="featured-body">
+                <div class="featured-title">Woodborn Ply</div>
+                <div class="featured-url">
+                  <a href="https://woodbornply.com" target="_blank"
+                    >woodbornply.com</a
+                  >
+                </div>
+                <div class="featured-desc">
+                  Plywood supplier site — certification badge marquee and full
+                  custom design system.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-title" style="margin-top: 24px">
+            <span class="tag-icon"></span>Key Projects
+          </div>
+          <div class="archive-row">
+            <div>
+              <div class="archive-title">
+                Emerge — Content Management Platform
+              </div>
+              <div class="archive-stack">
+                Laravel · Microservices · WebSockets · MySQL · REST APIs · AWS
+              </div>
+            </div>
+            <a
+              class="archive-link"
+              href="https://github.com/Shezziii"
+              target="_blank"
+              >View →</a
+            >
+          </div>
+          <div class="archive-row">
+            <div>
+              <div class="archive-title">UpBot — Website Monitoring Tool</div>
+              <div class="archive-stack">
+                Core PHP · AWS ECS/ECR · Docker · API Gateway
+              </div>
+            </div>
+            <a
+              class="archive-link"
+              href="https://github.com/Shezziii"
+              target="_blank"
+              >View →</a
+            >
+          </div>
+          <div class="archive-row">
+            <div>
+              <div class="archive-title">
+                Jitsi KYC — Video Verification Platform
+              </div>
+              <div class="archive-stack">
+                JavaScript · Jitsi Meet API · AWS S3
+              </div>
+            </div>
+            <a
+              class="archive-link"
+              href="https://github.com/Shezziii"
+              target="_blank"
+              >View →</a
+            >
           </div>
         </div>
       </div>
 
-      <div class="card-title" style="margin-top:24px;"><span class="tag-icon"></span>Key Projects</div>
-      <div class="archive-row">
-        <div>
-          <div class="archive-title">Emerge — Content Management Platform</div>
-          <div class="archive-stack">Laravel · Microservices · WebSockets · MySQL · REST APIs · AWS</div>
+      <!-- SIDEBAR -->
+      <div>
+        <div class="side-card" id="skills">
+          <div class="side-title">Skills</div>
+          <div class="skill-group">
+            <div class="skill-group-label">Languages</div>
+            <div class="pill-row">
+              <span class="pill">PHP (Core &amp; Advanced)</span>
+              <span class="pill new">Go</span>
+              <span class="pill">Python</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">C</span>
+              <span class="pill">C++</span>
+              <span class="pill">SQL</span>
+              <span class="pill">NoSQL</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Frameworks</div>
+            <div class="pill-row">
+              <span class="pill">Laravel</span>
+              <span class="pill">Next.js</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">Flask</span>
+              <span class="pill">Django</span>
+              <span class="pill">jQuery</span>
+              <span class="pill">Bootstrap</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Databases</div>
+            <div class="pill-row">
+              <span class="pill">MySQL</span>
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">MongoDB</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Tools</div>
+            <div class="pill-row">
+              <span class="pill">Docker</span>
+              <span class="pill">AWS ECS</span>
+              <span class="pill">AWS ECR</span>
+              <span class="pill">S3</span>
+              <span class="pill">Lambda</span>
+              <span class="pill">EC2</span>
+              <span class="pill">Git</span>
+              <span class="pill">Postman</span>
+              <span class="pill">Supabase</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-label">Concepts</div>
+            <div class="pill-row">
+              <span class="pill">OOP</span>
+              <span class="pill">Microservices</span>
+              <span class="pill">REST APIs</span>
+              <span class="pill">WebSockets</span>
+              <span class="pill">MVC</span>
+              <span class="pill">Agile</span>
+            </div>
+          </div>
         </div>
-        <a class="archive-link" href="https://github.com/Shezziii" target="_blank">View →</a>
-      </div>
-      <div class="archive-row">
-        <div>
-          <div class="archive-title">UpBot — Website Monitoring Tool</div>
-          <div class="archive-stack">Core PHP · AWS ECS/ECR · Docker · API Gateway</div>
+
+        <div class="side-card">
+          <div class="side-title">Contact info</div>
+          <div class="contact-list">
+            <div class="contact-row">
+              <span class="contact-ico">@</span
+              ><a href="mailto:i.am.shezziii@gmail.com"
+                >i.am.shezziii@gmail.com</a
+              >
+            </div>
+            <div class="contact-row">
+              <span class="contact-ico">#</span
+              ><a href="tel:+919084279912">+91 90842 79912</a>
+            </div>
+            <div class="contact-row">
+              <span class="contact-ico">•</span>Hasanpur, Amroha, UP, India —
+              244241
+            </div>
+            <div class="contact-row">
+              <span class="contact-ico">GH</span
+              ><a href="https://github.com/Shezziii" target="_blank"
+                >github.com/Shezziii</a
+              >
+            </div>
+            <div class="contact-row">
+              <span class="contact-ico">in</span
+              ><a
+                href="https://www.linkedin.com/in/mohd-shuib-khan-355796248"
+                target="_blank"
+                >LinkedIn profile</a
+              >
+            </div>
+            <div class="contact-row">
+              <span class="contact-ico">WW</span
+              ><a href="https://shezziii.github.io/portfolio" target="_blank"
+                >shezziii.github.io/portfolio</a
+              >
+            </div>
+          </div>
         </div>
-        <a class="archive-link" href="https://github.com/Shezziii" target="_blank">View →</a>
-      </div>
-      <div class="archive-row">
-        <div>
-          <div class="archive-title">Jitsi KYC — Video Verification Platform</div>
-          <div class="archive-stack">JavaScript · Jitsi Meet API · AWS S3</div>
-        </div>
-        <a class="archive-link" href="https://github.com/Shezziii" target="_blank">View →</a>
       </div>
     </div>
-  </div>
 
-  <!-- SIDEBAR -->
-  <div>
-    <div class="side-card" id="skills">
-      <div class="side-title">Skills</div>
-      <div class="skill-group">
-        <div class="skill-group-label">Languages</div>
-        <div class="pill-row">
-          <span class="pill">PHP (Core &amp; Advanced)</span>
-          <span class="pill new">Go</span>
-          <span class="pill">Python</span>
-          <span class="pill">JavaScript</span>
-          <span class="pill">C</span>
-          <span class="pill">C++</span>
-          <span class="pill">SQL</span>
-          <span class="pill">NoSQL</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Frameworks</div>
-        <div class="pill-row">
-          <span class="pill">Laravel</span>
-          <span class="pill">Next.js</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">Flask</span>
-          <span class="pill">Django</span>
-          <span class="pill">jQuery</span>
-          <span class="pill">Bootstrap</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Databases</div>
-        <div class="pill-row">
-          <span class="pill">MySQL</span>
-          <span class="pill">PostgreSQL</span>
-          <span class="pill">MongoDB</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Tools</div>
-        <div class="pill-row">
-          <span class="pill">Docker</span>
-          <span class="pill">AWS ECS</span>
-          <span class="pill">AWS ECR</span>
-          <span class="pill">S3</span>
-          <span class="pill">Lambda</span>
-          <span class="pill">EC2</span>
-          <span class="pill">Git</span>
-          <span class="pill">Postman</span>
-          <span class="pill">Supabase</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-label">Concepts</div>
-        <div class="pill-row">
-          <span class="pill">OOP</span>
-          <span class="pill">Microservices</span>
-          <span class="pill">REST APIs</span>
-          <span class="pill">WebSockets</span>
-          <span class="pill">MVC</span>
-          <span class="pill">Agile</span>
-        </div>
-      </div>
-    </div>
+    <footer>© 2026 Mohd Shuib Khan</footer>
 
-    <div class="side-card">
-      <div class="side-title">Contact info</div>
-      <div class="contact-list">
-        <div class="contact-row"><span class="contact-ico">@</span><a href="mailto:i.am.shezziii@gmail.com">i.am.shezziii@gmail.com</a></div>
-        <div class="contact-row"><span class="contact-ico">#</span><a href="tel:+919084279912">+91 90842 79912</a></div>
-        <div class="contact-row"><span class="contact-ico">•</span>Hasanpur, Amroha, UP, India — 244241</div>
-        <div class="contact-row"><span class="contact-ico">GH</span><a href="https://github.com/Shezziii" target="_blank">github.com/Shezziii</a></div>
-        <div class="contact-row"><span class="contact-ico">in</span><a href="https://www.linkedin.com/in/mohd-shuib-khan-355796248" target="_blank">LinkedIn profile</a></div>
-        <div class="contact-row"><span class="contact-ico">WW</span><a href="https://shezziii.github.io/portfolio" target="_blank">shezziii.github.io/portfolio</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer>© 2026 Mohd Shuib Khan</footer>
-
-<script>
-  document.querySelectorAll('.topbar-links a').forEach(link=>{
-    link.addEventListener('click', ()=>{
-      document.querySelectorAll('.topbar-links a').forEach(l=>l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-</script>
-</body>
+    <script>
+      document.querySelectorAll(".topbar-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document
+            .querySelectorAll(".topbar-links a")
+            .forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+        });
+      });
+    </script>
+  </body>
 </html>
